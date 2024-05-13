@@ -1,13 +1,15 @@
 # ImagePosts_Creative_DL
--> This project like an Instagram but in very simple way.
--> Any user can register themselves and then post any number of images they want.
--> They can also use the functionality of follow and unfollow any other users.
--> They can only see the image post of those users whom they followed.
--> They can also of like and unlike the image post of self of other users.
+1. This project like an Instagram but in very simple way.
+2. Any user can register themselves and then post any number of images they want.
+3. They can also use the functionality of follow and unfollow any other users.
+4. They can only see the image post of those users whom they followed.
+5. They can also of like and unlike the image post of self of other users.
 
 
 *************************************** IMPORTANT **************************************
+
 This backend project is hosted on Rendor.com( https://imageposts-creative.onrender.com/ )
+
 I have integrated the Swagger API (drf_spectacular) , so you can directly test all the API's.
 
 

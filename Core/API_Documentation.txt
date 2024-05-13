@@ -1,0 +1,161 @@
+
+1. For user Registration
+     url - /api/signup/
+     request type - POST
+
+     body - {
+     "username" : "test1",
+     "email" : "test1@gmail.com",
+     "password" : 12345
+     }
+
+     response: {
+     "success": "Account Created successfully",
+     "username": "test1",
+     "email": "test1@gmail.com"
+     } 
+
+2. User Login 
+     url - /api/login/
+     request type - POST
+     body - {
+          "email":"test1@gmail.com",
+          "password": 12345
+          }
+     
+     response - {
+        "user": "test1@gmail.com",
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE1MDAxNjk3LCJpYXQiOjE3MTQ5ODM2OTcsImp0aSI6ImYyMjE2YzM5NGRmZTQ4Y2M5Y2YxM2YwNDkwYTk4MTU3IiwidXNlcl9pZCI6Mn0.MqbQ3oDLxP09vIzqdxoMbZK1odQdQOD7Kb7ewcZOlfs",
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNTA3MDA5NywiaWF0IjoxNzE0OTgzNjk3LCJqdGkiOiJlZWFmNzVlM2RmZTk0YTI3OGQ2NjY3ODRlMDI5NzI1MSIsInVzZXJfaWQiOjJ9.dZGXhe88E0V_kuVfg1Zy0tzHMF54aJ0UaHJFRjYMP-E"
+     }
+
+3. Create a image post and get all you own imageposts
+    url - /api/posts/
+
+    a> request type - POST -> For Create a image post
+
+        request type - Post   
+        header - {
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5ODExNjI3LCJpYXQiOjE3MDk4MDU2MjcsImp0aSI6IjViNTBmMzI2YTg4MTRlNmY5N2YzYmVlYzY2Zjg4MGUwIiwidXNlcl9pZCI6M30.RoAhASmqKzs9WbBAS8r-pbq7bIiVBn2eo4_n4vpWZj0"
+        }
+        body (type multipart/form-data or form-files in vsCode) - {
+            image: choose your image.
+        }   
+
+        response - {
+            "success": "Image posted successfully."
+            }
+
+    b> request type - GET -> fetches all the image posts posted by yourself.
+
+        request type - GET   
+        header - {
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5ODExNjI3LCJpYXQiOjE3MDk4MDU2MjcsImp0aSI6IjViNTBmMzI2YTg4MTRlNmY5N2YzYmVlYzY2Zjg4MGUwIiwidXNlcl9pZCI6M30.RoAhASmqKzs9WbBAS8r-pbq7bIiVBn2eo4_n4vpWZj0"
+        }   
+
+        response - {
+            "success": [
+                {
+                "id": 8,
+                "image": "/image_post/dislike2.png",
+                "createdAt": "2024-05-13T08:02:07.047250Z",
+                "user": 2,
+                "likes": []
+                }
+            ]
+        }
+
+4. To like and unlike a post both by same API (if the user already like the post it trigger the unlike process otherwise it will like the image post) 
+
+    url - /api/posts/like_status/<int:post_id>/   #Enter the post id
+    request type - GET   
+    header - {
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5ODExNjI3LCJpYXQiOjE3MDk4MDU2MjcsImp0aSI6IjViNTBmMzI2YTg4MTRlNmY5N2YzYmVlYzY2Zjg4MGUwIiwidXNlcl9pZCI6M30.RoAhASmqKzs9WbBAS8r-pbq7bIiVBn2eo4_n4vpWZj0"
+     }
+
+    response - {
+        "success": "Post unliked successfully"
+        }
+
+5. To get all the list of users 
+
+    url - /api/users/
+    request type - GET   
+    header - {
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5ODExNjI3LCJpYXQiOjE3MDk4MDU2MjcsImp0aSI6IjViNTBmMzI2YTg4MTRlNmY5N2YzYmVlYzY2Zjg4MGUwIiwidXNlcl9pZCI6M30.RoAhASmqKzs9WbBAS8r-pbq7bIiVBn2eo4_n4vpWZj0"
+     }
+    
+    response - {
+                "success": [
+                    {
+                    "id": 1,
+                    "username": "swagger",
+                    "createdAt": "2024-05-13T07:28:21.353186Z",
+                    "user": 7,
+                    "followers": [
+                        2
+                    ]
+                    },
+                    {
+                    "id": 2,
+                    "username": "pappu",
+                    "createdAt": "2024-05-13T08:00:59.564063Z",
+                    "user": 8,
+                    "followers": []
+                    }
+                ]
+            }
+
+6. To follow / unfollow any user 
+
+    url - /api/users/follow_status/<int:user_id>/   #Enter the user id 
+    request type - GET   
+    header - {
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5ODExNjI3LCJpYXQiOjE3MDk4MDU2MjcsImp0aSI6IjViNTBmMzI2YTg4MTRlNmY5N2YzYmVlYzY2Zjg4MGUwIiwidXNlcl9pZCI6M30.RoAhASmqKzs9WbBAS8r-pbq7bIiVBn2eo4_n4vpWZj0"
+     }
+    
+    response - {
+            "success": "User followed successfully"
+            }
+            
+7. To get the list of users whom you follow
+
+    url - /api/users/followed/
+    request type - GET   
+    header - {
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5ODExNjI3LCJpYXQiOjE3MDk4MDU2MjcsImp0aSI6IjViNTBmMzI2YTg4MTRlNmY5N2YzYmVlYzY2Zjg4MGUwIiwidXNlcl9pZCI6M30.RoAhASmqKzs9WbBAS8r-pbq7bIiVBn2eo4_n4vpWZj0"
+     }
+
+     response - {
+            "success": [
+                {
+                "id": 1,
+                "username": "swagger",
+                "createdAt": "2024-05-13T07:28:21.353186Z",
+                "user": 7,
+                "followers": [
+                    2
+                ]
+                }
+            ]
+        }
+    
+8. To get all the posts of users whom you follow
+
+    url - /api/users/followed_userposts/
+    request type - GET   
+    header - {
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5ODExNjI3LCJpYXQiOjE3MDk4MDU2MjcsImp0aSI6IjViNTBmMzI2YTg4MTRlNmY5N2YzYmVlYzY2Zjg4MGUwIiwidXNlcl9pZCI6M30.RoAhASmqKzs9WbBAS8r-pbq7bIiVBn2eo4_n4vpWZj0"
+     }
+    
+    response - {
+  "success": [
+            {
+            "id": 7,
+            "image": "/image_post/like3.png",
+            "createdAt": "2024-05-13T07:30:25.043184Z",
+            "user": 1,
+            "likes": []
+            }
+        ]
+        }
